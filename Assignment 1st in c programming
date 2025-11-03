@@ -1,0 +1,148 @@
+Assignment 1st
+// Question.1 what do you mean by arrays give one example of array and how you can declared an array ?
+// Answer. An array is a data structure used to store multiple values of the same type in a single variable.
+// Example
+#include <stdio.h>
+
+int main() {
+    int marks[5] = {85, 90, 78, 92, 88};  
+    for(int i = 0; i < 5; i++) {
+        printf("Student %d scored %d marks.\n", i + 1, marks[i]);
+    }
+
+    return 0;
+}
+//output
+Student 1 scored 85 marks.
+Student 2 scored 90 marks.
+Student 3 scored 78 marks.
+Student 4 scored 92 marks.
+Student 5 scored 88 marks.
+
+// Question.2 what do you mean by function ? write the type of function and give one example in code of each type ?
+// Answer. A function is a block of code designed to perform a specific task. It helps organize code, avoid repetition, and improve readability. Functions are used to break a program into smaller, manageable parts.
+// The four main types of functions commonly used in programming in C language.
+// Example
+#include <stdio.h>
+
+// Function definition
+int add(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    int result = add(5, 3);  
+// Function call
+    printf("Sum is: %d\n", result);
+    return 0;
+}
+//Output
+Sum is: 8
+
+
+// Question.3 what do you mean by pointers ? write a code how you can initialise the pointer ?
+// Answer. A pointer in C is a variable that stores the memory address of another variable. Instead of holding a direct value like 10 or 'A', a pointer holds the location in memory where that value is stored.
+// Example
+#include <stdio.h>
+
+int main() {
+    int num = 10;       // Declare an integer variable
+    int *ptr = &num;    // Declare a pointer and assign it the address of num
+
+    printf("Value of num: %d\n", num);
+    printf("Address of num: %p\n", ptr);
+    printf("Value using pointer: %d\n", *ptr);  // Dereferencing the pointer
+
+    return 0;
+}
+// Output 
+Value of num: 10
+Address of num: 
+Value using pointer: 10
+
+// Question.4 what are the type of array ? write in a coad 1D & 2D included ?
+// Answer. In C programming, arrays are used to store multiple values of the same type. There are several types of arrays based on dimensions:
+1D Array	Stores a list of elements in a single row
+ 2D Array	Stores elements in rows and columns (like a table)
+ Multidimensional Array	Extends beyond 2D, like 3D or more dimensions
+// Example
+#include <stdio.h>
+
+int main() {
+    // 1D Array Example
+    int numbers[5] = {10, 20, 30, 40, 50};
+    printf("1D Array Elements:\n");
+    for(int i = 0; i < 5; i++) {
+        printf("%d ", numbers[i]);
+    }
+
+    // 2D Array Example
+    int matrix[2][3] = {
+        {1, 2, 3},
+        {4, 5, 6}
+    };
+    printf("\n\n2D Array Elements:\n");
+    for(int i = 0; i < 2; i++) {
+        for(int j = 0; j < 3; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+// 1D Array Elements:
+10 20 30 40 50 
+
+//2D Array Elements:
+1 2 3 
+4 5 6 
+
+
+// Question.5 Explain the type of operators in code ?
+// Answer. In C programming, operators are special symbols used to perform operations on variables and values. They are essential for building logic, performing calculations, and controlling program flow.
+// Example 
+#include <stdio.h>
+
+int main() {
+    int a = 10, b = 5;
+
+    // Arithmetic Operators
+    printf("Addition: %d\n", a + b);
+    printf("Subtraction: %d\n", a - b);
+    printf("Multiplication: %d\n", a * b);
+    printf("Division: %d\n", a / b);
+    printf("Modulus: %d\n", a % b);
+
+    // Relational Operators
+    printf("Is a equal to b? %d\n", a == b);
+    printf("Is a greater than b? %d\n", a > b);
+
+    // Logical Operators
+    printf("Logical AND (a > 0 && b > 0): %d\n", a > 0 && b > 0);
+    printf("Logical OR (a > 0 || b < 0): %d\n", a > 0 || b < 0);
+
+    // Assignment Operators
+    a += b;  // a = a + b
+    printf("After a += b, a = %d\n", a);
+
+    // Increment and Decrement Operators
+    a++;  // a = a + 1
+    b--;  // b = b - 1
+    printf("After increment, a = %d\n", a);
+    printf("After decrement, b = %d\n", b);
+
+    return 0;
+}
+// Addition: 15
+Subtraction: 5
+Multiplication: 50
+Division: 2
+Modulus: 0
+Is a equal to b? 0
+Is a greater than b? 1
+Logical AND (a > 0 && b > 0): 1
+Logical OR (a > 0 || b < 0): 1
+After a += b, a = 15
+After increment, a = 16
+After decrement, b = 4
