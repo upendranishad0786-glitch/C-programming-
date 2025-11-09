@@ -1,0 +1,117 @@
+//Q1. What do you mean by Structures?
+//A1. A structure in C is a user-defined data type that allows grouping variables of different data types under a single name. It helps organize complex data like records.
+//Example Code:
+
+#include <stdio.h>
+
+struct Student {
+    int roll;
+    char name[20];
+    float marks;
+};
+
+int main() {
+    struct Student s1 = {1, "upendra nishad", 75.5};
+
+    printf("Roll No: %d\n", s1.roll);
+    printf("Name: %s\n", s1.name);
+    printf("Marks: %.2f\n", s1.marks);
+
+    return 0;
+}
+//*
+OUTPUT:
+Roll No: 1
+Name: upendra nishad
+Marks: 75.50
+*//
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Q2. What do you mean by Array & Pointers Array?
+//Ans. Array: A collection of elements of the same data type stored in contiguous memory locations. Pointer Array: An array that stores addresses of variables (pointers) instead of actual values.
+//Example Code:
+
+#include <stdio.h>
+
+int main() {
+    int arr[3] = {10, 20, 30};
+    int *ptr[3]; // array of pointers
+
+    for(int i = 0; i < 3; i++) {
+        ptr[i] = &arr[i];  // storing addresses
+    }
+
+    printf("Array elements using pointers:\n");
+    for(int i = 0; i < 3; i++) {
+        printf("%d ", *ptr[i]); // dereferencing pointers
+    }
+
+    return 0;
+}
+//*
+OUTPUT:
+Array elements using pointers:
+10 20 30
+*//
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Q3. Compare two structure variables using comparison operators (= and !=)?
+//Ans. We cannot directly compare structures using == or != in C. Instead, we compare individual members.
+//Example Code:
+
+#include <stdio.h>
+#include <string.h>
+
+struct Student {
+    int roll;
+    char name[20];
+};
+
+int main() {
+    struct Student s1 = {1, "Amit"};
+    struct Student s2 = {2, "Amit"};
+
+    if(s1.roll == s2.roll && strcmp(s1.name, s2.name) == 0)
+        printf("Structures are Equal\n");
+    else
+        printf("Structures are Not Equal\n");
+
+    return 0;
+}
+//*
+OUTPUT:
+Structures are Not Equal
+*//
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Q4. Perform Arithmetic Operations on Structures?
+//Ans. We can perform arithmetic on numeric members of a structure, not on the structure as a whole.
+//Example Code:
+
+#include <stdio.h>
+
+struct Complex {
+    float real;
+    float imag;
+};
+
+int main() {
+    struct Complex c1 = {3.2, 4.5};
+    struct Complex c2 = {1.2, 2.5};
+    struct Complex sum, diff;
+
+    sum.real = c1.real + c2.real;
+    sum.imag = c1.imag + c2.imag;
+
+    diff.real = c1.real - c2.real;
+    diff.imag = c1.imag - c2.imag;
+
+    printf("Sum = %.1f + %.1fi\n", sum.real, sum.imag);
+    printf("Difference = %.1f + %.1fi\n", diff.real, diff.imag);
+
+    return 0;
+}
+//*
+OUTPUT:
+Sum = 4.4 + 7.0i
+Difference = 2.0 + 2.0i
+*//
