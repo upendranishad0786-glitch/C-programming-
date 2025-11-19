@@ -1,0 +1,155 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_BOOKS 100
+
+struct Book {
+int id;
+char title[50];
+char author[50];
+int available; // 1 = available, 0 = issued
+};
+
+struct Book library[MAX_BOOKS];
+int count = 0;
+
+void addBook();
+void displayBooks();
+void searchBook();
+void issueBook();
+void returnBook();
+
+int main() {
+int choice;
+
+while (1) {  
+    printf("\n===== COLLEGE LIBRARY SYSTEM =====\n");  
+    printf("1. Add Book\n");  
+    printf("2. Display All Books\n");  
+    printf("3. Search Book by ID\n");  
+    printf("4. Issue Book\n");  
+    printf("5. Return Book\n");  
+    printf("6. Exit\n");  
+    printf("Enter your choice: ");  
+    scanf("%d", &choice);  
+
+    switch (choice) {  
+        case 1: addBook(); break;  
+        case 2: displayBooks(); break;  
+        case 3: searchBook(); break;  
+        case 4: issueBook(); break;  
+        case 5: returnBook(); break;  
+        case 6: printf("Exiting...\n"); return 0;  
+        default: printf("Invalid choice! Try again.\n");  
+    }  
+}
+
+}
+
+void addBook() {
+if (count >= MAX_BOOKS) {
+printf("Library is full!\n");
+return;
+}
+
+struct Book b;  
+printf("Enter Book ID: ");  
+scanf("%d", &b.id);  
+printf("Enter Title: ");  
+scanf(" %[^\n]", b.title);  
+printf("Enter Author: ");  
+scanf(" %[^\n]", b.author);  
+b.available = 1;  
+
+library[count++] = b;  
+printf("Book added successfully!\n");
+
+}
+
+void displayBooks() {
+if (count == 0) {
+printf("No books in the library.\n");
+return;
+}
+
+printf("\n%-5s %-25s %-20s %-10s\n", "ID", "Title", "Author", "Status");  
+printf("-------------------------------------------------------------\n");  
+for (int i = 0; i < count; i++) {  
+    printf("%-5d %-25s %-20s %-10s\n",  
+           library[i].id,  
+           library[i].title,  
+           library[i].author,  
+           library[i].available ? "Available" : "Issued");  
+}
+
+}
+
+void searchBook() {
+int id, found = 0;
+printf("Enter Book ID to search: ");
+scanf("%d", &id);
+
+for (int i = 0; i < count; i++) {  
+    if (library[i].id == id) {  
+        printf("Book Found!\n");  
+        printf("ID: %d\nTitle: %s\nAuthor: %s\nStatus: %s\n",  
+               library[i].id,  
+               library[i].title,  
+               library[i].author,  
+               library[i].available ? "Available" : "Issued");  
+        found = 1;  
+        break;  
+    }  
+}  
+
+if (!found)  
+    printf("Book not found.\n");
+
+}
+
+void issueBook() {
+int id, found = 0;
+printf("Enter Book ID to issue: ");
+scanf("%d", &id);
+
+for (int i = 0; i < count; i++) {  
+    if (library[i].id == id) {  
+        found = 1;  
+        if (library[i].available) {  
+            library[i].available = 0;  
+            printf("Book issued successfully!\n");  
+        } else {  
+            printf("Book already issued!\n");  
+        }  
+        break;  
+    }  
+}  
+
+if (!found)  
+    printf("Book not found.\n");
+
+}
+
+void returnBook() {
+int id, found = 0;
+printf("Enter Book ID to return: ");
+scanf("%d", &id);
+
+for (int i = 0; i < count; i++) {  
+    if (library[i].id == id) {  
+        found = 1;  
+        if (!library[i].available) {  
+            library[i].available = 1;  
+            printf("Book returned successfully!\n");  
+        } else {  
+            printf("Book was not issued.\n");  
+        }  
+        break;  
+    }  
+}  
+
+if (!found)  
+    printf("Book not found.\n");
+
+}
+Is code ko samjhao taki hum presentation de sakhe
